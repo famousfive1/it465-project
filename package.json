@@ -1,0 +1,15 @@
+{
+  "name": "it465",
+  "version": "1.0.0",
+  "description": "Cryptocurrencies and Blockchain Technologies Project",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tejaswi Hegde, Adarsh Kishore",
+  "license": "MIT",
+  "dependencies": {
+    "web3": "^4.2.1"
+  }
+}
