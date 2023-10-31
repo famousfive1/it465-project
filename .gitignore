@@ -1,5 +1,15 @@
 node_modules
 build
+cache
 Gutenberg.zip
 Paper.pdf
 data/
+file:
+files/*
+Index.json
+index-contract-address.json
+cids.json
+file2cid.json
+id2file.json
+invindex.json
+tok2id.json

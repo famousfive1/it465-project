@@ -1,4 +1,5 @@
 const _Index = require("./index-contract-address.json").Index;
+const inverted = require("./invindex.json");
 
 async function addIndex(add) {
     if (network.name === "hardhat") {
@@ -14,19 +15,13 @@ async function addIndex(add) {
     await index.deployed();
 
     console.log("Index address:", index.address);
-    const ii = {
-        "a": ["1", "3"],
-        "r": ["3", "4"],
-        "l": ["3", "5"],
-    };
-    for(let tok in ii) {
-        await index.add(tok, ii[tok]);
+    for(let tok in inverted) {
+        await index.add(tok, inverted[tok]);
     }
-
 }
 
 addIndex(_Index)
-    // .then(() => process.exit(0))
+    .then(() => process.exit(0))
     .catch((error) => {
         console.error(error);
         process.exit(1);

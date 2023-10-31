@@ -4,10 +4,10 @@ pragma solidity ^0.8.9;
 
 contract Index {
 
-    mapping(string => string[]) idx;
+    mapping(string => int32[]) idx;
     string[] tokens;
 
-    function add(string memory key, string[] memory hash) public {
+    function add(string memory key, int32[] memory hash) public {
         idx[key] = hash;
         tokens.push(key);
     }
@@ -16,7 +16,7 @@ contract Index {
         return tokens;
     }
 
-    function get(string memory key) public view returns (string[] memory) {
+    function get(string memory key) public view returns (int32[] memory) {
         return idx[key];
     }
 

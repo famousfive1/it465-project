@@ -34,6 +34,7 @@
     "@helia/json": "^1.0.3",
     "@helia/strings": "^1.0.1",
     "@helia/unixfs": "^1.4.2",
+    "blockstore-fs": "^1.1.6",
     "helia": "^2.0.3"
   }
 }

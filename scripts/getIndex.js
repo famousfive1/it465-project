@@ -1,4 +1,6 @@
 const _Index = require("./index-contract-address.json").Index;
+const fs = require('fs');
+const path = require('path');
 
 async function getIndex(add) {
     if (network.name === "hardhat") {
@@ -15,16 +17,17 @@ async function getIndex(add) {
 
     console.log("Index address:", index.address);
     const tokens = await index.getTok();
-    console.log("Tokens: ", tokens);
+    const inv_idx = {};
     for(let tok of tokens) {
         const vals = await index.get(tok);
-        console.log(tok, ": ", vals);
+        inv_idx[tok] = vals;
     }
 
+    fs.writeFileSync(path.join(__dirname, 'tok2id.json'), JSON.stringify(inv_idx));
 }
 
 getIndex(_Index)
-    // .then(() => process.exit(0))
+    .then(() => process.exit(0))
     .catch((error) => {
         console.error(error);
         process.exit(1);
