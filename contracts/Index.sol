@@ -7,9 +7,11 @@ contract Index {
     mapping(string => int32[]) idx;
     string[] tokens;
 
-    function add(string memory key, int32[] memory hash) public {
-        idx[key] = hash;
-        tokens.push(key);
+    function add(string[] memory key, int32[][] memory hash) public {
+        for (uint32 i = 0; i < key.length; i++) {
+            idx[key[i]] = hash[i];
+            tokens.push(key[i]);
+        }
     }
 
     function getTok() public view returns (string[] memory) {
