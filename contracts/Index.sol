@@ -4,22 +4,30 @@ pragma solidity ^0.8.9;
 
 contract Index {
 
-    mapping(string => int32[]) idx;
-    string[] tokens;
+    mapping(uint => string) id2hash;
+    uint[] tokens;
 
-    function add(string[] memory key, int32[][] memory hash) public {
-        for (uint32 i = 0; i < key.length; i++) {
-            idx[key[i]] = hash[i];
-            tokens.push(key[i]);
-        }
+    string invidx;
+
+    function add(uint id, string memory hash) public {
+        id2hash[id] = hash;
+        tokens.push(id);
     }
 
-    function getTok() public view returns (string[] memory) {
+    function storeInvIdx(string memory hash) public {
+        invidx = hash;
+    }
+
+    function getInvIdx() public view returns (string memory) {
+        return invidx;
+    }
+
+    function getTok() public view returns (uint[] memory) {
         return tokens;
     }
 
-    function get(string memory key) public view returns (int32[] memory) {
-        return idx[key];
+    function get(uint key) public view returns (string memory) {
+        return id2hash[key];
     }
 
 }
