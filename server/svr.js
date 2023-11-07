@@ -17,13 +17,15 @@ function serveHTML() {
 async function search(req) {
     const formData = await req.formData();
     const term = formData.get('search');
-    const filepath = path.join(__dirname, '..', 'scripts', 'search.js');
+    const filepath = path.join(__dirname, '..', 'scripts', 'search.mjs');
 
     const proc = Bun.spawn(['node', filepath, term]);
     const text = await new Response(proc.stdout).text();
     console.log(`Got search results for ${term}`);
 
-    return new Response('<p>' + text.replace('\n', '<br />') + '</p>');
+    let text_ = text.split('\n').slice(1).map(e => e.split(' ')[1]);
+    console.log(text_);
+    return new Response(text_.join('<br>'));
 }
 
 async function getFile(req) {
