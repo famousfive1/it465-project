@@ -24,7 +24,7 @@ async function uploadFiles(add) {
 
     for(const id in id2file) {
         const f = id2file[id];
-        const fn = join(filedir.pathname, f);
+        const fn = join(filedir.pathname, `${f}.txt`);
         const cid = await uxfs.addFile({
             path: f,
             content: readFileSync(fn)
